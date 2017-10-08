@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Images Interface</title>
+    <style>
+        input{
+            margin:10px;
+        }
+        input[type=radio]{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<form enctype="multipart/form-data" action="uploader.php" method="post">
+    <div><input name="image_source" id="source_1" type="radio" value="1" checked />По ссылке</div>
+    <div><input name="image_source" id="source_2" type="radio" value="2" />Из файла</div>
+    <div><input placeholder="URL изображения" type="url" name="image_url" id="inp_1"></div>
+    <div><input type="file" accept=".jpg,.png" style="display: none" name="image" id="inp_2"></div>
+    <button type="submit">Загрузить</button>
+</form>
+<code>
+    Поддерживаемые форматы изображений: .jpg, .png<br>
+    API находится по адресу /api.php<br>
+    Поддерживаемые методы:
+    <ul>
+        <li><b>crop</b> - Обрезка изображения<br>Формат запроса:<br>
+            <b>api.php?action=<i>crop</i>&image_id=<i>your_image_id</i>&width=<i>image_width</i>&height=<i>image_height</i>&x=<i>crop_left_position</i>&y=<i>crop_top_position</i></b><br></li>
+        <li><b>resize</b> - Изменение размеров изображения<br>Формат запроса:<br>
+            <b>api.php?action=<i>resize</i>&image_id=<i>your_image_id</i>&width=<i>image_width</i>&height=<i>image_height</i></b><br></li>
+        <li><b>full</b> - Получение исходного изображения<br>Формат запроса:<br>
+            <b>api.php?action=<i>full</i>&image_id=<i>your_image_id</i></b><br></li>
+    </ul>
+</code>
+<script>
+    document.getElementById('source_1').onclick=function () {
+        if (document.getElementById('source_1').checked) {
+            document.getElementById('inp_2').style.cssText= "display:none";
+            document.getElementById('inp_1').style.cssText= "display:block";
+        }
+    }
+    document.getElementById('source_2').onclick=function () {
+        if (document.getElementById('source_2').checked) {
+            document.getElementById('inp_1').style.cssText= "display:none";
+            document.getElementById('inp_2').style.cssText= "display:block";
+        }
+    }
+</script>
+</body>
+</html>

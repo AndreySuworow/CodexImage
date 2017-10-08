@@ -67,8 +67,8 @@ class images
             'version' => 'latest',
             'region' => 'us-east-1',
             'credentials' => [
-                'key' => 'AKIAJJ6ONBBV4DVGOA4Q',
-                'secret' => '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',
+                'key' => '[amazon_key]',
+                'secret' => '[amzon_secret_key]',
             ],
         ]);
 
